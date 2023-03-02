@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'image_page.dart';
-import 'settings_page.dart';
+import 'todolist_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,11 +30,19 @@ class _FirstPageState extends State<FirstPage> {
   int navIndex = 0;
   int count = 0;
 
+  String getTitle(int index) {
+    if (index == 0) {
+      return 'Home';
+    } else {
+      return 'To Do List';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('My App'),
+          title: Text(getTitle(navIndex)),
           centerTitle: true,
           // backgroundColor: Colors.red[600],
         ),
@@ -101,7 +109,7 @@ class _FirstPageState extends State<FirstPage> {
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: 'Settings'),
+                icon: Icon(Icons.list), label: 'To Do List'),
           ],
           currentIndex: navIndex,
           onTap: (index) => {
